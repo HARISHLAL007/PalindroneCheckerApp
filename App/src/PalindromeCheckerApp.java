@@ -4,25 +4,22 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        int number = 121;
+        int reversed = 0;
+        int remainder;
+        int original = number;
 
-        int num, reversed = 0, remainder, original;
-
-        System.out.print("Enter number: ");
-        num = sc.nextInt();
-
-        original = num;
-
-        while(num != 0){
-            remainder = num % 10;
+        while (number != 0) {
+            remainder = number % 10;
             reversed = reversed * 10 + remainder;
-            num = num / 10;
+            number = number / 10;
         }
 
-        if(original == reversed)
+        if (original == reversed) {
             System.out.println("Palindrome Number");
-        else
+        } else {
             System.out.println("Not a Palindrome Number");
+        }
 
     }
 }
