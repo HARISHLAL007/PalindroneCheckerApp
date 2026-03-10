@@ -1,21 +1,22 @@
-
 import java.util.Scanner;
 
 public class PalindromeCheckerApp {
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        int num, reversed = 0, remainder, original;
+
+        int number, reversed = 0, remainder, original;
 
         System.out.print("Enter a number: ");
-        num = sc.nextInt();
+        number = sc.nextInt();
 
-        original = num;
+        original = number;
 
-        while (num != 0) {
-            remainder = num % 10;
+        while (number != 0) {
+            remainder = number % 10;
             reversed = reversed * 10 + remainder;
-            num = num / 10;
+            number = number / 10;
         }
 
         if (original == reversed) {
