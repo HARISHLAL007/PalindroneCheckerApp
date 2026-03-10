@@ -9,16 +9,16 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String str = sc.nextLine();
 
-        Deque<Character> deque = new LinkedList<>();
+        LinkedList<Character> list = new LinkedList<>();
 
         for(int i = 0; i < str.length(); i++){
-            deque.addLast(str.charAt(i));
+            list.add(str.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        while(deque.size() > 1){
-            if(deque.removeFirst() != deque.removeLast()){
+        while(list.size() > 1){
+            if(list.removeFirst() != list.removeLast()){
                 isPalindrome = false;
                 break;
             }
