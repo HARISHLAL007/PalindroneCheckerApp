@@ -1,21 +1,25 @@
-import java.util.Scanner;
+interface PalindromeStrategy {
+    boolean isPalindrome(String str);
+}
 
-class PalindromeChecker {
+class ReverseStrategy implements PalindromeStrategy {
 
-    public boolean checkPalindrome(String str) {
+    public boolean isPalindrome(String str) {
+        String reversed = new StringBuilder(str).reverse().toString();
+        return str.equals(reversed);
+    }
+}
 
-        int start = 0;
-        int end = str.length() - 1;
+class PalindromeContext {
 
-        while(start < end){
-            if(str.charAt(start) != str.charAt(end)){
-                return false;
-            }
-            start++;
-            end--;
-        }
+    private PalindromeStrategy strategy;
 
-        return true;
+    public PalindromeContext(PalindromeStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public boolean check(String str) {
+        return strategy.isPalindrome(str);
     }
 }
 
@@ -23,18 +27,14 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        String str = "madam";
 
-        System.out.print("Enter a string: ");
-        String str = sc.nextLine();
+        PalindromeContext context =
+                new PalindromeContext(new ReverseStrategy());
 
-        PalindromeChecker checker = new PalindromeChecker();
-
-        if(checker.checkPalindrome(str))
+        if(context.check(str))
             System.out.println("Palindrome String");
         else
             System.out.println("Not a Palindrome String");
-
-        sc.close();
     }
 }
